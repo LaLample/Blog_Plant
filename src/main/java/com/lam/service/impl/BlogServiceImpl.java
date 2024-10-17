@@ -8,6 +8,7 @@ import com.lam.model.mapper.BlogMapper;
 import com.lam.service.IBlogService;
 import com.lam.utils.SnowflakeIdWorker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IB
     @Autowired
     BlogMapper blogMapper;
 
+    @Async("blogExecutor")
     public boolean saveBlog(Blog blog){
         int i= blogMapper.insert(blog);
         if(i!=-1){

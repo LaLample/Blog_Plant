@@ -3,7 +3,7 @@ spring:
   application:
     name: Blog_provider
   rabbitmq:
-    username: &{user}
+    username: ${user}
     password: ${password}
     virtual-host: /
     host: ${ip}
